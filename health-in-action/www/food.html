@@ -7,21 +7,21 @@
 <html>
 
 <script>
-	function incrementScore(){
+	function incrementScore() {
 		val = $("#score")[0].innerHTML;
-		$("#score")[0].innerHTML = parseInt(val)+1;
+		$("#score")[0].innerHTML = parseInt(val) + 1;
 	}
 
-	function decrementScore(){
+	function decrementScore() {
 		val = $("#score")[0].innerHTML;
-		if(parseInt(val)!==0){
-			$("#score")[0].innerHTML = parseInt(val)-1;
+		if (parseInt(val) !== 0) {
+			$("#score")[0].innerHTML = parseInt(val) - 1;
 		}
 	}
 </script>
 
 <head>
-	<title>Food - My Community</title>
+	<title>Dieters</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -41,14 +41,14 @@
 						<ul>
 							<li><a href="signup.html">Sign Up</a></li>
 							<li><a href="login.html">Login</a></li>
-							
+
 							<li><a href="contact.html">Make Appointment</a></li>
-							
+
 							<li><a href="form.html">My Data</a></li>
 							<li><a href="result.html">My Results</a></li>
 							<li><a href="community.html">My Community</a></li>
 							<li><a href="dashboard.html">Dashboard</a></li>
-							
+
 						</ul>
 					</li>
 					<li><a href="#" class="button">Sign Up</a></li>
@@ -59,15 +59,15 @@
 		<!-- Main -->
 		<section id="main" class="container">
 			<header>
-				<h2>Food - Community </h2>
-				<p>Just an assorted selection of elements.</p>
+				<h2>Dieters</h2>
+				<p>Community for Dieters</p>
 			</header>
 			<div class="row">
 				<div class="col-12">
 
 					<!-- Text -->
 					<section class="box">
-						
+
 
 						<header>
 							<h3>Blog</h3>
@@ -76,15 +76,16 @@
 						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi
 							integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia
 							sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<div class="col-3 col-6-narrower col-12-mobilep">
-									<ul class="actions stacked">
-										<li><a href="#" onclick="incrementScore()" class="button special small fit">Vote UP</a></li>
-										<li><a href="#" onclick="decrementScore()" class="button small fit">Vote DOWN</a></li>
-									</ul>
-							</div>
-							<p>
-								Score:<span id="score">0</span>
-							</p>
+						<div class="col-3 col-6-narrower col-12-mobilep">
+							<ul class="actions stacked">
+								<li><a href="#" onclick="incrementScore()" class="button special small fit">Vote UP</a>
+								</li>
+								<li><a href="#" onclick="decrementScore()" class="button small fit">Vote DOWN</a></li>
+							</ul>
+						</div>
+						<p>
+							Score:<span id="score">0</span>
+						</p>
 						<header>
 							<h4>Reply: Amy</h4>
 							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
@@ -94,56 +95,54 @@
 							sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
 
 						<hr />
-						
+
 						<div class="col-12">
-							<textarea name="message" id="message" placeholder="Enter your message"
-								rows="6"></textarea>
+							<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 						</div>
 						<ul class="actions">
 							<li><input type="submit" value="Post Reply" /></li>
 						</ul>
 
-						<hr/>
+						<hr />
 
 						<p> Question: Peter </p>
-					</header>
-					<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi
-						integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia
-						sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+						</header>
+						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi
+							integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia
+							sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
 						<div class="col-3 col-6-narrower col-12-mobilep">
-								<ul class="actions stacked">
-									<li><a href="#" class="button special small fit">Vote UP</a></li>
-									<li><a href="#" class="button small fit">Vote DOWN</a></li>
-								</ul>
-							</div>
-					<header>
+							<ul class="actions stacked">
+								<li><a href="#" class="button special small fit">Vote UP</a></li>
+								<li><a href="#" class="button small fit">Vote DOWN</a></li>
+							</ul>
+						</div>
+						<header>
 
-						<h4>Reply: Amy</h4>
-						<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-					</header>
-					<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi
-						integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia
-						sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+							<h4>Reply: Amy</h4>
+							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+						</header>
+						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi
+							integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia
+							sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
 
-					<hr />
-					
-					<div class="col-12">
-						<textarea name="message" id="message" placeholder="Enter your message"
-							rows="6"></textarea>
-					</div>
-					<ul class="actions">
-						<li><input type="submit" value="Post Reply" /></li>
-					</ul>
+						<hr />
+
+						<div class="col-12">
+							<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Post Reply" /></li>
+						</ul>
 
 
 					</section>
 
 				</div>
 			</div>
-			
-			
-			
-			
+
+
+
+
 		</section>
 
 		<!-- Footer -->
