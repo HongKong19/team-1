@@ -20,8 +20,8 @@ def login():
 @app.route('/signup',methods = ['POST'])
 def signup():
     data = json.loads(request.data)
-    m = _sql.DbHelper.sign_up(data['username'],data['password'],data['height'],data['weight'],data['bp'],data['sugar'],data['smoke'],data['alcohol'],data['foodpref'])
-    return {"res" : "value added"}
+    _sql.DbHelper.sign_up(data['username'],data['password'],data['height'],data['weight'],data['bp'],data['sugar'],data['smoke'],data['alcohol'],data['foodpref'])
+    return {"res" : "sucess"}
 
 
 @app.route('/suggestions',methods = ['POST'])
@@ -30,10 +30,11 @@ def suggest():
     return _sql.DbHelper.suggestions(data['username'])
 
 
-@app.route('/appoinment', methods = ['POST'])
-def appoinment():
+@app.route('/appointment', methods = ['POST'])
+def appointment():
     data = json.loads(request.data)
-    return _sql.DbHelper.suggestions(data['username'])
+    _sql.DbHelper.appointment(data['username'])
+    return {"res":"success"}
 
 @app.route('/schedule', methods = ['GET'])
 def appointment_schedule():
