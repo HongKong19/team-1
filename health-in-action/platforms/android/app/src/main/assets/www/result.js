@@ -1,18 +1,19 @@
 
-$("#userdet").submit(function(event){
+document.onload(function(event){
     event.preventDefault();
     $.ajax({
-        url: 'http://localhost:3001/signup',
+        url: 'http://localhost:3001/suggestions',
         method: 'post',
-        data: {username: $("#name").val(), password:"",weight: $("#weight").val(), height: $("#height").val(), bp: $("#blood_pressure").val(),sugar:$("#bloodsugar").val(),smoke:$("#smoking").val(),alcohol:$("#alcoholic").val(),foodpref:$("#preference").val()},
+        data: {username: ""},
         crossDomain: true
       })
       .then(function(success){
-        if (success === ""){
-            alert("Success");
-            window.open ('results.html','_self',false);
-            console.log("worked");
+        var result = JSON.parse(success);
+        var update="";
+        for(var i=0; i<result['food'].length();i++){
+            update+="<li>"+result['food'][i]+"</li">
         }
+        $("#food").innerhtml(update);
         });
 });
 
