@@ -11,9 +11,19 @@ document.onload(function(event){
         var result = JSON.parse(success);
         var update="";
         for(var i=0; i<result['food'].length();i++){
-            update+="<li>"+result['food'][i]+"</li">
+            update+="<li>"+result['food'][i]+"</li>";
         }
         $("#food").innerhtml(update);
+        update="";
+        for(var i=0; i<result['exercise'].length();i++){
+            update+="<li>"+result['exercise'][i]+"</li>";
+        }
+        $("#exercise").innerhtml(update);
+        update="";
+        for(var i=0; i<result['goals'].length();i++){
+            update+='<li>'+result['goals'][i]+'</br><div class="progress"><div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div></li>';
+        }
+        $("#goals").innerhtml(update);
         });
 });
 
