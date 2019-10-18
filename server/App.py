@@ -1,11 +1,57 @@
-import logging
-from name import app
+from flask import Flask,request
+from flask_cors import CORS
+import _sql
+import json
 
-from flask import request, jsonify
 
-@app.route('/', methods=['GET'])
-def default_route():
-    return "Let's Go Team 1"
+app = Flask(__name__)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+CORS(app, origins="*", methods=['GET', 'POST'],allow_headers=[
+        "Content-Type", "Authorization", "Access-Control-Allow-Credentials","Access-Control-Allow-Origin","Access-Control-Allow-Headers"],
+        supports_credentials=True)
+
+
+@app.route('/login',methods = ['POST'])
+def login():
+    data = json.loads(request.data)
+    return _sql.DbHelper.login(data['username'], data['password'])
+
+
+@app.route('/signup',methods = ['POST'])
+def signup():
+    data = json.loads(request.data)
+    m = _sql.DbHelper.sign_up(data['username'],data['password'],data['height'],data['weight'],data['bp'],data['sugar'],data['smoke'],data['alcohol'],data['foodpref'])
+    return {"res" : "value added"}
+
+
+@app.route('/suggestions',methods = ['POST'])
+def suggest():
+    data = json.loads(request.data)
+    return _sql.DbHelper.suggestions(data['username'])
+
+
+@app.route('/appoinment', methods = ['POST'])
+def appoinment():
+    data = json.loads(request.data)
+    return _sql.DbHelper.suggestions(data['username'])
+
+@app.route('/schedule', methods = ['GET'])
+def appointment_schedule():
+    return _sql.DbHelper.schedule()
+
+if __name__ == '__main__':
+    app.run()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -16,30 +16,31 @@
 <body class="is-preload">
     <div id="page-wrapper">
 
-        <!-- Header -->
-        <header id="header">
-            <h1><a href="index.html">Alpha</a> by HTML5 UP</h1>
+        <header id="header" class="alt">
+            <h1><a href="index.html">Health in Action</a> by HTML5 UP</h1>
             <nav id="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li>
-                        <a href="#" class="icon solid fa-angle-down">Layouts</a>
+                        <!--<a href="#" class="icon solid fa-angle-down">Layouts</a>-->
                         <ul>
+                            <li><a href="signup.html">Sign Up</a></li>
                             <li><a href="generic.html">Generic</a></li>
                             <li><a href="contact.html">Contact</a></li>
                             <li><a href="elements.html">Elements</a></li>
-                            <li>
-                                <a href="#">Submenu</a>
-                                <ul>
-                                    <li><a href="#">Option One</a></li>
-                                    <li><a href="#">Option Two</a></li>
-                                    <li><a href="#">Option Three</a></li>
-                                    <li><a href="#">Option Four</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="form.html">My Data</a></li>
+                            <li><a href="result.html">My Results</a></li>
+                            <!--<li>
+								<a href="#">Submenu</a>
+								<ul>
+									<li><a href="#">Option One</a></li>
+									<li><a href="#">Option Two</a></li>
+									<li><a href="#">Option Three</a></li>
+									<li><a href="#">Option Four</a></li>
+								</ul>
+							</li>-->
                         </ul>
                     </li>
-                    <li><a href="#" class="button">Sign Up</a></li>
                 </ul>
             </nav>
         </header>
@@ -55,7 +56,7 @@
                     <!-- Form -->
                     <section class="box">
                         <h3>Form</h3>
-                        <form method="post" action="#">
+                        <form id="signup-form" method="post" action="#">
                             <div class="row gtr-uniform gtr-50">
                                 <div class="col-6 col-12-mobilep">
                                     <input type="text" name="username" id="username" value="" placeholder="User Name"
@@ -68,15 +69,14 @@
                                     <input type="password" name="password" id="password" value="" placeholder="Password"
                                         required />
                                 </div>
-                                <div style="align-content: center;">
-                                    <a href="#" class="button alt icon solid fa-check">Icon</a>
+                                <div class="col-6 col-12-mobilep">
+                                    <center><input type="button" id="signup-button" value="SIGN UP"></center>
                                 </div>
                             </div>
                         </form>
                     </section>
                 </div>
-            </div>
-
+                </divx1>
         </section>
 
         <!-- Footer -->
@@ -106,6 +106,7 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="assets/js/signup.js"></script>
 </body>
 
 </html>
