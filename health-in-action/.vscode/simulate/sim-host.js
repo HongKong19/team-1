@@ -1,4 +1,79 @@
-(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"android-platform-core-handlers":[function(require,module,exports){
+// Copyright (c) Microsoft Corporation. All rights reserved.
+
+module.exports = {
+    'CoreAndroid': {
+        'show': function (success, fail, service, action, args) {
+            success && success();
+        },
+        'messageChannel': function (success, fail, service, action, args) {
+            // This call is used to communicate the messageChannel callback to the native Java code. Since we don't need
+            // that, we just swallow this and do nothing.
+        }
+    }
+};
+
+},{}],"argscheck":[function(require,module,exports){
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Based in part on code from Apache Cordova (https://github.com/apache/cordova-js)
+
+var utils = require('utils');
+
+var moduleExports = module.exports;
+
+var typeMap = {
+    'A': 'Array',
+    'D': 'Date',
+    'N': 'Number',
+    'S': 'String',
+    'F': 'Function',
+    'O': 'Object'
+};
+
+function extractParamName(callee, argIndex) {
+    return (/.*?\((.*?)\)/).exec(callee)[1].split(', ')[argIndex];
+}
+
+function checkArgs(spec, functionName, args, opt_callee) {
+    if (!moduleExports.enableChecks) {
+        return;
+    }
+    var errMsg = null;
+    var typeName;
+    for (var i = 0; i < spec.length; ++i) {
+        var c = spec.charAt(i),
+            cUpper = c.toUpperCase(),
+            arg = args[i];
+        // Asterix means allow anything.
+        if (c == '*') {
+            continue;
+        }
+        typeName = utils.typeName(arg);
+        if ((arg === null || arg === undefined) && c == cUpper) {
+            continue;
+        }
+        if (typeName != typeMap[cUpper]) {
+            errMsg = 'Expected ' + typeMap[cUpper];
+            break;
+        }
+    }
+    if (errMsg) {
+        errMsg += ', but got ' + typeName + '.';
+        errMsg = 'Wrong type for parameter "' + extractParamName(opt_callee || args.callee, i) + '" of ' + functionName + ': ' + errMsg;
+        throw TypeError(errMsg);
+    }
+}
+
+function getValue(value, defaultValue) {
+    return value === undefined ? defaultValue : value;
+}
+
+moduleExports.checkArgs = checkArgs;
+moduleExports.getValue = getValue;
+moduleExports.enableChecks = true;
+
+
+},{"utils":"utils"}],1:[function(require,module,exports){
 module.exports={
   "android": ["4.0.4", "4.2.2", "4.4.2", "5.0", "5.1", "6.0", "7.0"],
   "ios": ["4", "5", "6", "7", "8", "9", "10"],
@@ -3696,82 +3771,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
 
-},{"process/browser.js":9,"timers":11}],"android-platform-core-handlers":[function(require,module,exports){
-// Copyright (c) Microsoft Corporation. All rights reserved.
-
-module.exports = {
-    'CoreAndroid': {
-        'show': function (success, fail, service, action, args) {
-            success && success();
-        },
-        'messageChannel': function (success, fail, service, action, args) {
-            // This call is used to communicate the messageChannel callback to the native Java code. Since we don't need
-            // that, we just swallow this and do nothing.
-        }
-    }
-};
-
-},{}],"argscheck":[function(require,module,exports){
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Based in part on code from Apache Cordova (https://github.com/apache/cordova-js)
-
-var utils = require('utils');
-
-var moduleExports = module.exports;
-
-var typeMap = {
-    'A': 'Array',
-    'D': 'Date',
-    'N': 'Number',
-    'S': 'String',
-    'F': 'Function',
-    'O': 'Object'
-};
-
-function extractParamName(callee, argIndex) {
-    return (/.*?\((.*?)\)/).exec(callee)[1].split(', ')[argIndex];
-}
-
-function checkArgs(spec, functionName, args, opt_callee) {
-    if (!moduleExports.enableChecks) {
-        return;
-    }
-    var errMsg = null;
-    var typeName;
-    for (var i = 0; i < spec.length; ++i) {
-        var c = spec.charAt(i),
-            cUpper = c.toUpperCase(),
-            arg = args[i];
-        // Asterix means allow anything.
-        if (c == '*') {
-            continue;
-        }
-        typeName = utils.typeName(arg);
-        if ((arg === null || arg === undefined) && c == cUpper) {
-            continue;
-        }
-        if (typeName != typeMap[cUpper]) {
-            errMsg = 'Expected ' + typeMap[cUpper];
-            break;
-        }
-    }
-    if (errMsg) {
-        errMsg += ', but got ' + typeName + '.';
-        errMsg = 'Wrong type for parameter "' + extractParamName(opt_callee || args.callee, i) + '" of ' + functionName + ': ' + errMsg;
-        throw TypeError(errMsg);
-    }
-}
-
-function getValue(value, defaultValue) {
-    return value === undefined ? defaultValue : value;
-}
-
-moduleExports.checkArgs = checkArgs;
-moduleExports.getValue = getValue;
-moduleExports.enableChecks = true;
-
-
-},{"utils":"utils"}],"cordova-plugin-device-handlers":[function(require,module,exports){
+},{"process/browser.js":9,"timers":11}],"cordova-plugin-device-handlers":[function(require,module,exports){
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
 var deviceModel = require('./device-model');
